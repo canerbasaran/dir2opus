@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 5)
 
 Package: dir2ogg
 Architecture: all
-Depends: python (>= 2.4), python-mutagen, vorbis-tools, mpg123
+Depends: python (>= 2.4), python-mutagen, vorbis-tools, mpg123 | mpg321
 Recommends: faad, mplayer
 Description: audio file converter into ogg-vorbis format
  dir2ogg converts MP3, M4A, WMA and WAV files to the open-source OGG format.
