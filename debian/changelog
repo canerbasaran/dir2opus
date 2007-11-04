@@ -1,9 +1,10 @@
-dir2ogg (0.11~beta1-1) experimental; urgency=low
+dir2ogg (0.11~rc1-1) unstable; urgency=low
 
-  * New development release with improved tag support and supporting
-    mplayer as a cd ripper.
+  * First release candidate of dir2ogg 0.11, with improved MP3 support 
+    and more.
+  * First 0.11 series upload to unstable
 
- -- Julian Andres Klode <jak@jak-linux.org>  Sun, 30 Sep 2007 17:52:52 +0200
+ -- Julian Andres Klode <jak@jak-linux.org>  Sun, 04 Nov 2007 17:21:27 +0100
 
 dir2ogg (0.11~alpha3-1) experimental; urgency=low
 
