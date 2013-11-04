@@ -6,32 +6,32 @@ then
    exit 2
 fi
 
-if [ -e "/usr/bin/dir2ogg" ]
+if [ -e "/usr/bin/dir2opus" ]
 then
-   echo "/usr/bin/dir2ogg exists! Overwrite? (y/n): "
+   echo "/usr/bin/dir2opus exists! Overwrite? (y/n): "
    read answ
    if [ $answ == "n" ]
    then
       exit 1
    fi
 fi
-cp dir2ogg /usr/bin/dir2ogg
-chown root:root /usr/bin/dir2ogg
-chmod 755 /usr/bin/dir2ogg
+cp dir2opus /usr/bin/dir2opus
+chown root:root /usr/bin/dir2opus
+chmod 755 /usr/bin/dir2opus
 
-if [ -e "/usr/man/man1/dir2ogg.1" ]
+if [ -e "/usr/man/man1/dir2opus.1" ]
 then
-   echo "/usr/man/man1/dir2ogg.1 exists! Overwrite? (y/n): "
+   echo "/usr/man/man1/dir2opus.1 exists! Overwrite? (y/n): "
    read answ
    if [ $answ == "n" ]
    then
       exit 1
    fi
 fi
-cp dir2ogg.1 /usr/man/man1/dir2ogg.1
-chown root:root /usr/man/man1/dir2ogg.1
-chmod 644 /usr/man/man1/dir2ogg.1
+cp dir2opus.1 /usr/man/man1/dir2opus.1
+chown root:root /usr/man/man1/dir2opus.1
+chmod 644 /usr/man/man1/dir2opus.1
 
 
-echo "dir2ogg is now installed. Enjoy..."
+echo "dir2opus is now installed. Enjoy..."
 

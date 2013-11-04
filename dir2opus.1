@@ -1,15 +1,15 @@
-.TH DIR2OGG 1 "2009-08-04" "dir2ogg 0.11.8"
+.TH DIR2OPUS 1 "2013-11-04" "dir2opus 0.12.0"
 .SH NAME
-dir2ogg \- Convert MP3, WAV, and M4A files to OGG format
+dir2opus \- Convert MP3, WAV, and M4A files to Opus format
 .SH SYNOPSIS
-\fBdir2ogg\fP [ options ] ( \fIfilename\fP [\fIfilename2\fP] ... || \fIdirectory\fP [\fIdirectory2\fP] ... || [\fIcdrom-device\fP] ... )
+\fBdir2opus\fP [ options ] ( \fIfilename\fP [\fIfilename2\fP] ... || \fIdirectory\fP [\fIdirectory2\fP] ... || [\fIcdrom-device\fP] ... )
 .SH DESCRIPTION
-\fIdir2ogg\fP converts MP3, M4A, WMA and WAV files to the open\-source OGG format. \fIdir2ogg\fP is a python script that simply binds together mpg123, faad, and oggenc making it easier for the user to convert his/her music files. OGGs are about 15 to 20 percent smaller than MP3 files, with the same relative audio quality. \fIdir2ogg\fP can be called with the \fI\-d\fP flag at the command line to convert any number of directories at once, or given MP3, M4A, WMA,
-and/or WAV filenames as arguments, \fIdir2ogg\fP will convert only those files. If converting WAV, M4A or WMA files with \fI\-d\fP you must add
+\fIdir2opus\fP converts MP3, M4A, WMA and WAV files to the open\-source Opus format. \fIdir2opus\fP is a python script that simply binds together mpg123, faad, and opusenc making it easier for the user to convert his/her music files. Opus files are about 15 to 20 percent smaller than MP3 files, with the same relative audio quality. \fIdir2opus\fP can be called with the \fI\-d\fP flag at the command line to convert any number of directories at once, or given MP3, M4A, WMA,
+and/or WAV filenames as arguments, \fIdir2opus\fP will convert only those files. If converting WAV, M4A or WMA files with \fI\-d\fP you must add
 the \fI\-w\fP, \fI\-m\fP or \fI\-W\fP command line flags respectively. These flags are not neccesary unless using \fI\-d\fP.
 Note that converting M4A files requires you to have faad installed, and converting WMA files requires mplayer.
 
-Keep in mind that converting from MP3 or M4A to OGG is a conversion between two lossy formats. This is fine if you just want to free up some disk space, but if you're a hard\-core audiophile you may be disappointed. I really can't notice a difference in quality with 'naked' ears myself.
+Keep in mind that converting from MP3 or M4A to Opus is a conversion between two lossy formats. This is fine if you just want to free up some disk space, but if you're a hard\-core audiophile you may be disappointed. I really can't notice a difference in quality with 'naked' ears myself.
 
 .SS General Options
 .TP
@@ -25,7 +25,7 @@ compatibility purposes only and does not need to be specified anymore.
 like \fI\-d\fP but descends recursively into directories.
 .TP
 \fB\-c or \-\-cdda\fP
-Convert an audio CD into ogg. You may pass the device as an argument to the script (default: /dev/cdrom). Requires cdparanoia orq icedax or mplayer
+Convert an audio CD into opus. You may pass the device as an argument to the script (default: /dev/cdrom). Requires cdparanoia orq icedax or mplayer
 .TP
 \fB\-p or \-\-preserve-wav\fP
 preserve all WAV files. By default they are deleted.
@@ -38,7 +38,7 @@ wav files instead.
 Delete the input file after conversion
 .TP
 \fB\-v or \-\-verbose\fP
-increase \fIdir2ogg\fP's verbosity.
+increase \fIdir2opus\fP's verbosity.
 .TP
 \fB\-Q or \-\-quiet\fP
 Do not display progress messages, except the name of the file which is
@@ -49,28 +49,32 @@ may still display some.
 .TP
 \fB\-\-convert-all\fP
 Convert all supported audio files found in the directories given on the
-command-line to Ogg Vorbis.
+command-line to Opus.
 .TP
 \fB\-f or \-\-convert-ape\fP
 Convert all APE (Monkey's Audio) files found in the directories given on
-the command-line to Ogg Vorbis, using either ogg123 or flac or mplayer.
+the command-line to Opus, using either ogg123 or flac or mplayer.
 .TP
 \fB\-f or \-\-convert-flac\fP
 Convert all FLAC (Free Lossless Audio Codec) files found in the directories
-given on the command-line to Ogg Vorbis, using ogg123 or flac or mplayer.
+given on the command-line to Opus, using ogg123 or flac or mplayer.
 .TP
 \fB\-m or \-\-convert-m4a\fP
 convert all M4A (MPEG-4 Audio) files found in the directories given on the
-command-line to Ogg Vorbis, using faad or mplayer. For decoding ALAC
+command-line to Opus, using faad or mplayer. For decoding ALAC
 (Apple Lossless) files, 'alac-decoder' may be used.
 .TP
 \fB\-m or \-\-convert-mpc\fP
 convert all MPC (MusePack) files found in the directories given on the
-command-line to Ogg Vorbis, using mpcdec or mplayer.
+command-line to Opus, using mpcdec or mplayer.
+.TP
+\fB\-g or \-\-convert-ogg\fP
+convert all Ogg Vorbis files found in the directories given on the
+command-line to Opus, using oggdec or ogg123.
 .TP
 \fB\-W or \-\-convert-wma\fP
 Convert all WMA (Windows Media Audio) files found in the directories given
-on the command-line to Ogg Vorbis, using mplayer.
+on the command-line to Opus, using mplayer.
 .TP
 \fB\-w or \-\-convert-wav\fP
 Convert all WAV files found in the directories given on the command-line
@@ -78,26 +82,25 @@ to Ogg Vorbis.
 .TP
 \fB\-V or \-\-convert-wv\fP
 Convert all WV (WavPack) files found in the directories given on the
-command-line to Ogg Vorbis.
+command-line to Opus.
 .TP
 \fB\-n or \-\-no-mp3\fP
 ingore all MP3 files found in directories given on the command-line.
 .TP
 \fB\-\-(ape|cd|flac|m4a|mp3|mpc|wma|wv)\-decoder=COMMAND\fP
 Set the decoder you want to use for one filetype, e.g.: \-\-mp3-decoder=lame.
-Run dir2ogg \-\-help to see the available decoders.
+Run dir2opus \-\-help to see the available decoders.
 .TP
 \fB\-qN or \-\-quality=N\fP
-OGG quality. N is a number between \-1 and 10. Default is 3. Decimals are OK (ie: 3.7)
-.TP
-\fB\-t or \-\-smart\-mp3
-Try to use the same quality as the input file. MP3 input only!
+Encoding computational complexity (0-10, default: 5). Zero gives the fastest encodes but lower quality, while 10 gives the highest quality but slower encoding.'
 .SH "SEE ALSO"
-\fImpg123\fP(1), \fImplayer\fP(1), \fIoggenc\fP(1)
+\fImpg123\fP(1), \fImplayer\fP(1), \fIopusenc\fP(1)
 .SH BUGS
-Enter you bug reports in Launchpad at https://bugs.launchpad.net/dir2ogg
+Enter your bug reports at https://github.com/3M3RY/dir2opus
 .SH AUTHORS
 .PD 0
+.TP
+\fB0.12 and newer:\fP  Emery Hemingway <emery@fuzzlabs.org>
 .TP
 \fB0.10 and newer:\fP  Julian Andres Klode <jak@jak-linux.org>
 .TP
