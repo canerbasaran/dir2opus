@@ -87,7 +87,7 @@ def read_opts():
     parser.add_option('-d', '--directory', action='store_true', help='convert files in all directories specified as arguments (not needed anymore)')
     parser.add_option('-r', '--recursive', action='store_true', help='convert files in all subdirectories of all directories specified as arguments')
     parser.add_option('-c', '--cdda', action='store_true', help="convert audio cd in all devices specified as arguments (or default: /dev/cdrom) [EXPERIMENTAL]")
-    parser.add_option('-q', '--quality', metavar='N', default=10, type='int', help='Encoding computational complexity (0-10, default: %default). Zero gives the fastest encodes but lower quality, while 10 gives the highest quality but slower encoding.')
+    parser.add_option('-q', '--quality', metavar='N', type='int', help='Encoding computational complexity (0-10, default: %default). Zero gives the fastest encodes but lower quality, while 10 gives the highest quality but slower encoding.')
     parser.add_option('-b', '--bitrate', metavar='B', help='Target bitrate in kbit/sec (6-256/channel).')
     parser.add_option('-n', '--no-mp3', dest='convert_mp3', action='store_false', default=True, help="don't convert mp3s (use with '-d' or '-r')")
     parser.add_option('-a', '--convert-all', action='store_true', help="convert all supported formats")
@@ -416,8 +416,11 @@ class Convert(Id3TagHandler):
         if self.conf.bitrate:
             opts.append("--bitrate")
             opts.append(self.conf.bitrate)
+        if self.conf.quality:
+            opts.append("--comp")
+            opts.append(self.conf.quality)
         if dec:
-            enc = Popen(['opusenc', '--comp', str(self.conf.quality)] + opts + ['-', self.songopus], stdin=dec.stdout)
+            enc = Popen(['opusenc', ] + opts + ['-', self.songopus], stdin=dec.stdout)
 
             enc.communicate()
             dec.wait()
@@ -428,7 +431,7 @@ class Convert(Id3TagHandler):
                 warn('Encoding of "%s" failed.' % self.song)
                 return False
         else:
-            enc = call(['opusenc', '--comp', str(self.conf.quality)] + opts + [self.songway, self.songopus])
+            enc = call(['opusenc', ] + opts + [self.songway, self.songopus])
             if enc != 0:
                 warn('Encoding of "%s" failed.' % self.songwav)
                 return False
